@@ -111,7 +111,7 @@ const prompt = `
     
  
     res.status(200).json(
-        new ApiResponse(200 , true , "messege sent successfully" , {messege , aimessege})
+        new ApiResponse(200 ,  {messege , aimessege} , "messege sent successfully" ,  )
     )
 
 })
