@@ -8,23 +8,21 @@ export const verifyjwt = async (req, _ , next) =>{
 
    try {
 
-    console.log("header is present " , req.header);
+    
     
 
     console.log("token iiiii 💕💕",req.header("Authorization"));
 
     console.log("cookies are present 💕💕",req.cookies);
-    
 
-    
-     const token =  req.cookies?.accessToken || req.header("Authorization").replace("Bearer "," ").trim()
+     const token = req.header("Authorization").replace("Bearer "," ").trim()
  
      console.log("Extracted token:", token);
  
          console.log("akash token is required " , token);
           
           if (!token) {
-              throw new ApiError(200, "token is required")
+              throw new ApiError(400, "token is required")
           }
           console.log("reach heresssssssssss");
 

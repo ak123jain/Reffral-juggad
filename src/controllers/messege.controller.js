@@ -16,8 +16,6 @@ export const sendmessege = asynchandler(async(req , res)=>{
 
     console.log("req.body", req.body);
     console.log("req.params", req.params);
-    
-    
 
     if(!receiverId || !content){
         throw new ApiError(400 , "All fields are required")
@@ -40,6 +38,7 @@ export const sendmessege = asynchandler(async(req , res)=>{
         throw new ApiError(404, "Sender not found");
     }
 
+    
     const messege = await Messege.create({
         sender,
         receiver : receiverUser,
@@ -91,7 +90,6 @@ const prompt = `
 
     } catch (error) {
         console.log("Error generating reply:", error);
-        
     }
 
 
