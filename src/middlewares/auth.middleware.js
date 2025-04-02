@@ -8,9 +8,6 @@ export const verifyjwt = async (req, _ , next) =>{
 
    try {
 
-    
-    
-
     console.log("token iiiii 💕💕",req.header("Authorization"));
 
     console.log("cookies are present 💕💕",req.cookies);
@@ -24,12 +21,18 @@ export const verifyjwt = async (req, _ , next) =>{
           if (!token) {
               throw new ApiError(400, "token is required")
           }
+
           console.log("reach heresssssssssss");
 
-          
- 
-          const decodedtoken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+          try {
+            const decodedtoken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
+          } catch (error) {
+            console.log("error is here", error);
+            
+          }
+
+ 
             console.log("decoded token is hereeeeee", decodedtoken);
  
           const user = await User.findById(decodedtoken.id).select("-password -refreshtoken");

@@ -11,7 +11,7 @@ router.route("/addmentor").post(
 )
 
 router.route("/getmentor").get(
-    verifyjwt,
+      
     Getmentor 
 )
 
