@@ -24,13 +24,25 @@ export const verifyjwt = async (req, _ , next) =>{
 
           console.log("reach heresssssssssss");
 
-          try {
-            const decodedtoken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+          // try {
+          //   const decodedtoken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
-          } catch (error) {
-            console.log("error is here", error);
+          // } catch (error) {
+          //   console.log("error is here", error);
             
-          }
+          // }
+
+          
+        let decodedtoken;
+        try {
+            decodedtoken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            console.log("Decoded token:", decodedtoken);
+        } catch (error) {
+            console.error("JWT verification error:", error);
+            return next(new ApiError(401, "Invalid or expired token"));
+        }
+
+
 
  
             console.log("decoded token is hereeeeee", decodedtoken);

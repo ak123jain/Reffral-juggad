@@ -26,10 +26,12 @@ app.use(cookieParser())
 import  MentorRouter  from './routes/Mentor.router.js';
 import  MessegeRouter  from './routes/messege.router.js';
 import useRouter from './routes/user.router.js';
+import orderRouter from './routes/order.router.js';
 
 app.use("/mentor", MentorRouter)
 app.use("/messege" , MessegeRouter)
 app.use("/user", useRouter)
+app.use("/orders", orderRouter)
 
 
 export {app}
