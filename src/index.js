@@ -2,7 +2,13 @@ import {app } from "./app.js";
 import http from 'http';
 import { Server } from 'socket.io';
 import dotenv from "dotenv";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+
+// Fix __dirname in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config({
     path: "./env"
@@ -19,7 +25,7 @@ const io = new Server(server, {
 global.io = io; // Set the io instance in the global scope
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile('index.html', { root: __dirname });
 });
 
  
